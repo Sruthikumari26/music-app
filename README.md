@@ -18,18 +18,6 @@ featuring secure user authentication and a sleek dark-themed interface.
 - 🎧 **Music Playback** — Load a folder and play `.wav` files
 - 🚀 **Smooth Navigation** — Login ↔ Sign-up transitions
 
----
-
-## 📸 Screenshots
-
-| Login Screen | Sign Up Screen | Player |
-|:---:|:---:|:---:|
-| ![Login](screenshots/login.png) | ![Signup](screenshots/signup.png) | ![Player](screenshots/player.png) |
-
-> 💡 Tip: Take screenshots, put them in a `screenshots/` folder, and reference them here.
-
----
-
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
@@ -38,8 +26,6 @@ featuring secure user authentication and a sleek dark-themed interface.
 | GUI | Java Swing |
 | Database | SQLite (via `sqlite-jdbc`) |
 | Security | SHA-256 password hashing |
-
----
 
 ## ⚙️ Getting Started
 
@@ -83,9 +69,6 @@ MusicApp/
 ├── lib/sqlite-jdbc-3.45.0.0.jar
 └── README.md
 ```
-
----
-
 ## 🗺️ Roadmap
 
 - [x] User sign up / sign in
@@ -94,25 +77,8 @@ MusicApp/
 - [ ] Album art & playlist saving
 - [ ] Volume slider & seek bar
 
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](../../issues).
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 👤 Author
-
-**Your Name**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- Email: you@example.com
+- GitHub: https://github.com/Sruthikumari26
+- Email: sruthikumari92@gmail.com
 
 ⭐ If you like this project, please give it a star!
