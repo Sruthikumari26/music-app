@@ -37,7 +37,7 @@ featuring secure user authentication and a sleek dark-themed interface.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/MusicWave.git
+   git clone https://github.com/sruthikumari26/MusicWave.git
    cd MusicWave
    ```
 
