@@ -1,4 +1,4 @@
-
+package web;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 import java.io.OutputStream;
