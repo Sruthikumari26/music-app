@@ -1,53 +1,95 @@
 
+
 package web;
 
 import com.sun.net.httpserver.HttpServer;
-import java.net.InetSocketAddress;
+
+import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class WebServer {
+public final class WebServer {
 
-    public static void start() throws Exception {
+    private static final Logger LOGGER =
+            Logger.getLogger(WebServer.class.getName());
 
-        HttpServer server = HttpServer.create(
-            new InetSocketAddress("0.0.0.0", 8080), 0
-        );
+    private static final int PORT = 8080;
 
-        server.createContext("/", exchange -> {
+    private static final String HTML_RESPONSE = """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>MusicWave</title>
+            </head>
+            <body style="background:#17172b;color:white;
+                text-align:center;font-family:Arial">
 
-            String html = """
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>MusicWave</title>
-                </head>
-                <body style="background:#17172b;color:white;
-                    text-align:center;font-family:Arial">
+                <h1>Welcome to MusicWave</h1>
+                <h2>Application is running!</h2>
 
-                    <h1>Welcome to MusicWave</h1>
-                    <h2>Application is running!</h2>
+            </body>
+            </html>
+            """;
 
-                </body>
-                </html>
-                """;
+    private WebServer() {
+        throw new IllegalStateException("Utility class");
+    }
 
-            byte[] response =
-                html.getBytes(StandardCharsets.UTF_8);
+    public static void start() throws WebServerException {
 
-            exchange.getResponseHeaders().set(
-                "Content-Type", "text/html; charset=UTF-8"
+        try {
+            HttpServer server = HttpServer.create(
+                    new InetSocketAddress("0.0.0.0", PORT), 0
             );
 
-            exchange.sendResponseHeaders(200, response.length);
+            server.createContext("/", exchange -> {
 
-            try (OutputStream os = exchange.getResponseBody()) {
-                os.write(response);
-            }
-        });
+                byte[] response = HTML_RESPONSE.getBytes(
+                        StandardCharsets.UTF_8
+                );
 
-        server.start();
+                exchange.getResponseHeaders().set(
+                        "Content-Type",
+                        "text/html; charset=UTF-8"
+                );
 
-        System.out.println("MusicWave started on port 8080");
+                exchange.sendResponseHeaders(
+                        200, response.length
+                );
+
+                try (OutputStream os = exchange.getResponseBody()) {
+                    os.write(response);
+                } catch (IOException e) {
+                    LOGGER.log(
+                            Level.WARNING,
+                            "Failed to send HTTP response.",
+                            e
+                    );
+                }
+            });
+
+            server.start();
+
+            LOGGER.info(
+                    "MusicWave started on port " + PORT
+            );
+
+        } catch (IOException e) {
+            throw new WebServerException(
+                    "Unable to start MusicWave web server.", e
+            );
+        }
+    }
+
+    public static class WebServerException extends Exception {
+
+        private static final long serialVersionUID = 1L;
+
+        public WebServerException(String message, Throwable cause) {
+            super(message, cause);
+        }
     }
 }
