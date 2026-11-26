@@ -40,14 +40,7 @@ featuring secure user authentication and a sleek dark-themed interface.
    git clone https://github.com/sruthikumari26/MusicWave.git
    cd MusicWave
    ```
-
-2. **Add the SQLite JDBC driver**
-   - Download `sqlite-jdbc-3.45.0.0.jar` from
-     [xerial/sqlite-jdbc releases](https://github.com/xerial/sqlite-jdbc/releases)
-   - Place it in the `lib/` folder
-   - Add it to your IDE's classpath (Project Structure → Libraries)
-
-3. **Run the app**
+2. **Run the app**
    - Open the project in your IDE
    - Run `Main.java`
    - The database `musicapp.db` is created automatically on first launch 🎉
